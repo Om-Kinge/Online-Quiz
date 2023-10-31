@@ -30,9 +30,17 @@
 		else
 		{
             $str="insert into user set name='$name',email='$email',password='$password',college='$college'";
-			if((mysqli_query($con,$str)))	
+			if((mysqli_query($con,$str)))
+			{
 			echo "<center><h3><script>alert('Congrats.. You have successfully registered !!');</script></h3></center>";
 			header('location: welcome.php?q=1');
+			}
+			else
+			{
+				 $error_message = mysqli_error($con);
+                                 echo "Error: " . $error_message;
+			}
+			
 		}
     }
 ?>
